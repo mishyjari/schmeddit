@@ -38,7 +38,7 @@ Category.all.each do |c|
       category_id: c.id,
       user_id: User.all.sample.id,
       title: Faker::Hacker.ingverb + ' ' + Faker::Hacker.noun + ' ' + Faker::Hacker.verb,
-      content: 100.times do Faker::Hacker.say_something_smart + ' ' end
+      content: Faker::Lorem.paragraph(sentence_count: 20)
       )
   end
 end
