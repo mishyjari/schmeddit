@@ -10,6 +10,26 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id='header'>
+      <h1 id='main-logo'>Schmeddit</h1>
+    </div>
+    <div id='navigation'>
+      <ul>
+        <li><a href='#'>Home</a></li>
+        <li><a href='#'>Sign Up</a></li>
+        <li><a href='#'>Some Link</a></li>
+        <li><a href='#'>Some Link</a></li>
+      </ul>
+    </div>
+    <div id='right-sidebar'></div>
+    <p>Some kind of content can go here idk</p>
+    <div id='main-yield'>
+
+      <%= yield %>
+
+    </div>
+    <div id='footer'>
+      <h6>I am a footer</h6>
+    </div>
   </body>
 </html>

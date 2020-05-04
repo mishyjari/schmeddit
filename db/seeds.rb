@@ -1,12 +1,12 @@
-User.destroy_all
-Post.destroy_all
-Category.destroy_all
-Comment.destroy_all
-Reply.destroy_all
+UserCommentVote.destroy_all
+UserFavoriteCategory.destroy_all
 UserFavoritePost.destroy_all
 UserPostVote.destroy_all
-UserFavoriteCategory.destroy_all
-UserCommentVote.destroy_all
+Reply.destroy_all
+Comment.destroy_all
+Post.destroy_all
+Category.destroy_all
+User.destroy_all
 
 # Make some users
 
@@ -27,7 +27,6 @@ end
 10.times do
   Category.create(
     name: Faker::Hacker.adjective,
-    user_created_id: User.all.sample.id
   )
 end
 
@@ -60,8 +59,7 @@ end
 Comment.all.each do |c|
   Reply.create(
     parent_id: c.id,
-    user_id: User.all.sample.id,
-    content: Faker::Hacker.say_something_smart
+    child_id: Comment.all.sample.id,
   )
 end
 
