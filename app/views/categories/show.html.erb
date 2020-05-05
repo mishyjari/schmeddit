@@ -1,10 +1,5 @@
 <h3><%= @category.name %></h3>
+<h5><%= link_to 'New Post', new_post_path %></h5>
 <% @category.posts.each do |post| %>
-  <div class='post-preview'>
-    <h5><%= link_to post.title, post_path(post) %></h5>
-    <p><%= post.content %></p>
-    <p><%= pluralize(post.num_post_faves, 'favorite') %></p>
-    <p><%= pluralize(post.num_post_upvotes, 'up vote') %></p>
-    <p><%= pluralize(post.num_post_downvotes, 'down vote') %></p>
-  </div>
+  <%= render 'partials/post_preview', post: post %>
 <% end %>

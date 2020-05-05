@@ -5,6 +5,19 @@ class Post < ApplicationRecord
   has_many :user_post_votes
   has_many :user_favorite_posts
 
+  def self.random_posts(n)
+    posts = []
+    n.times do 
+      post = Post.all.sample
+      while posts.include?(post)
+        # Post has already been selected, try again
+        post = Post.all.sample
+      end
+      posts << post
+    end
+    posts 
+  end
+
   def num_post_faves
     self.user_favorite_posts.count
   end

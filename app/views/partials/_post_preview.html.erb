@@ -1,0 +1,8 @@
+
+  <div class='post-preview'>
+    <h5><%= link_to post.title, post_path(post) %></h5>
+    <p><%= post.content %></p>
+    <p><%= pluralize(post.num_post_faves, 'favorite') %></p>
+    <p><%= pluralize(post.num_post_upvotes, 'up vote') %></p>
+    <p><%= pluralize(post.num_post_downvotes, 'down vote') %></p>
+  </div>
