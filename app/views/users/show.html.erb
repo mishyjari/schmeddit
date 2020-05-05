@@ -1,2 +1,17 @@
-<h1>User#show</h1>
-<p>Find me in app/views/user/show.html.erb</p>
+<h1><%= "#{@user.username}'s Profile Page" %></h1>
+<p>name: <%= "#{@user.first_name} #{@user.last_name}" %><p>
+<p>email: <%= @user.email %><p>
+<p>bio: <%= @user.bio %><p>
+<img src="<%= @user.profile_img_url %>" alt="<%= "#{@user.username}'s profile image" %>" height="42" width="42">
+
+<% if @user.posts %>
+  <h2><%= "#{@user.username}'s Submitted Posts" %></h2>
+  <% @user.sorted_posts.each do |post| %>
+    <p>
+      <%= link_to post.title, post_path(post) %>
+      <%= "Votes: #{post.score}" %>
+    </p>
+  <% end %>
+<% else %>
+  <h2>This user has submitted no posts</h2>
+<% end %>

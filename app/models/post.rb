@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
-  has_many :comments
+  has_many :comments, as: :imageable
   has_many :user_post_votes
   has_many :user_favorite_posts
 
@@ -32,6 +32,10 @@ class Post < ApplicationRecord
 
   def num_post_downvotes
     self.user_post_votes.select{ |vote| !vote.up_vote? }.count
+  end
+
+  def score
+    self.num_post_upvotes - self.num_post_downvotes
   end
 
   def self.sort_posts_by_most_favorites
