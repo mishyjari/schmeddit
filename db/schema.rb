@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_173308) do
+ActiveRecord::Schema.define(version: 2020_05_05_155217) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 2020_05_04_173308) do
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
-    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.integer "parent_id"
+    t.string "parent_type"
+    t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -37,13 +38,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_173308) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "replies", force: :cascade do |t|
-    t.integer "parent_id"
-    t.integer "child_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_comment_votes", force: :cascade do |t|
@@ -97,7 +91,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_173308) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"

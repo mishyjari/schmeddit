@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :category
   belongs_to :user
-  has_many :comments, as: :imageable
+  has_many :comments, as: :parent
   has_many :user_post_votes
   has_many :user_favorite_posts
 

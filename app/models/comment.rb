@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
-  belongs_to :user
-  belongs_to :post
-  has_many :replies, foreign_key: 'parent_id'
   has_many :user_comment_votes
+  has_many :replies, class_name: "Comment", as: :parent
+  belongs_to :parent, polymorphic: true
+  belongs_to :user
 end

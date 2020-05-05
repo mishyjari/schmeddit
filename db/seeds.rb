@@ -2,7 +2,6 @@ UserCommentVote.destroy_all
 UserFavoriteCategory.destroy_all
 UserFavoritePost.destroy_all
 UserPostVote.destroy_all
-Reply.destroy_all
 Comment.destroy_all
 Post.destroy_all
 Category.destroy_all
@@ -48,7 +47,8 @@ end
 Post.all.each do |p|
   5.times do
     Comment.create(
-      post_id: p.id,
+      parent_id: p.id,
+      parent_type: "Post",
       user_id: User.all.sample.id,
       content: Faker::Lorem.paragraph(sentence_count: 4)
     )
@@ -57,9 +57,11 @@ end
 
 # Make some replies
 Comment.all.each do |c|
-  Reply.create(
+  Comment.create(
     parent_id: c.id,
-    child_id: Comment.all.sample.id,
+    parent_type: "Comment",
+    user_id: User.all.sample.id,
+    content: Faker::Lorem.paragraph(sentence_count: 4)
   )
 end
 
