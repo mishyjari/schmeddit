@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   resources :comments, only: [:new, :create, :edit, :update, :destroy]
   resources :categories, only: [:index, :show, :new, :create]
 
+  post '/posts/:id/favorite', to: 'posts#favorite'
+  post '/posts/:id/up_vote', to: 'posts#up_vote'
+  post '/posts/:id/down_vote', to: 'posts#down_vote'
+
+
 end

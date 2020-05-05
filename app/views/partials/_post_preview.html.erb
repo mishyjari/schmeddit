@@ -10,9 +10,9 @@
         <p>this is the logged in users post. add features</p>
       <% else %>
         <% user = User.find(session[:user_id]) %>
-        <p><%= link_to 'Upvote this post', '#', :onclick => 'post.up_vote_post(user)' %></p>
-        <p><%= link_to 'Downvote this post', '#', :onclick => 'post.down_vote_post(user)' %></p>
-        <p><%= link_to 'Favorite this post', '#', :onclick => 'post.favorite_post(user)' %></p>
+        <p><%= link_to 'Upvote this post', "/posts/#{post.id}/up_vote", method: 'post' %></p>
+        <p><%= link_to 'Downvote this post', "/posts/#{post.id}/down_vote", method: 'post' %></p>
+        <p><%= link_to 'Favorite this post', "/posts/#{post.id}/favorite", method: 'post' %></p>
       <% end %>
     <% end %>
   </div>
