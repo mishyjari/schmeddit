@@ -6,4 +6,8 @@ class User < ApplicationRecord
   has_many :user_favorite_categories
   has_many :user_post_votes
   has_many :user_comment_posts
+
+  def sorted_posts
+    self.posts.sort_by { |post| post.score * -1 }
+  end
 end

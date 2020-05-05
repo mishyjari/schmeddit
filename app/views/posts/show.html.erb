@@ -1,4 +1,5 @@
 <h3><%= @post.title %></h3>
+<h4>Votes: <%= @post.num_post_upvotes - @post.num_post_downvotes %>
 <p><strong>Author: </strong><%= link_to @post.user.username, user_path(@post.user) %></p>
 <p><strong>Posted: </strong><%= @post.created_at.ctime %></p>
 <div id='post-show-content'>
