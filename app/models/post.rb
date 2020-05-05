@@ -41,4 +41,16 @@ class Post < ApplicationRecord
   def self.sort_posts_by_most_liked
     Post.all.sort_by{ |post| post.num_post_upvotes * -1 }
   end
+
+  def up_vote_post(user)
+    UserPostVote.create(post_id: self.id, user_id: user.id, up_vote?: true)
+  end
+
+  def down_vote_post(user)
+    UserPostVote.create(post_id: self.id, user_id: user.id, up_vote?: false)
+  end
+
+  def favorite_post(user)
+    UserFavoritePost.create(post_id: self.id, user_id: user.id)
+  end
 end
