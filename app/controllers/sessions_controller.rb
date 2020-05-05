@@ -1,25 +1,27 @@
 class SessionsController < ApplicationController
   
   def new
-    render 'login'
-  end
-
-  def login
-    create
+    if session[:user_id]
+      redirect_to user_path(User.find(session[:user_id]))
+    else
+      render 'login'
+    end
   end
 
   def create
-    if User.find_by(username: params[:username])
-      session[:user_id] = User.find_by(username: params[:username]).id
-      redirect_back fallback_location: home_path
+    user = User.find_by(username: params[:username])
+    if user && user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect_to home_path
     else
-      flash[:err] = ['User not found with username ' + params[:username]]
+      flash[:err] = ['Invalid Credentials!']
       redirect_to login_path
     end
   end
 
   def destroy
     session.destroy
+    redirect_to home_path 
   end
 
 

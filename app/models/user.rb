@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :user_post_votes
   has_many :user_comment_posts
 
+  has_secure_password
+
   def sorted_posts
     self.posts.sort_by { |post| post.score * -1 }
   end
