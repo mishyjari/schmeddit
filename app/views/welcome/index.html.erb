@@ -1,2 +1,8 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
+<div id='welcome-links'>
+  <em>Put some links or something here</em>
+</div>
+<div id='welcome-posts'>
+  <% Post.random_posts(6).each do |post| %>
+    <%= render 'partials/post_preview', post: post %> 
+  <% end %>
+</div>

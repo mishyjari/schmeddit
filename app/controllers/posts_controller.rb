@@ -46,6 +46,36 @@ class PostsController < ApplicationController
     redirect_to welcome_index_path
   end
 
+  def up_vote
+    post = Post.find(params[:id])
+    user_id = session[:user_id]
+    if UserPostVote.create(user_id: user_id, post_id: post.id, up_vote?: true)
+      redirect_back fallback_location: post_path(post)
+    else
+      #error
+    end
+  end
+
+  def down_vote
+    post = Post.find(params[:id])
+    user_id = session[:user_id]
+    if UserPostVote.create(user_id: user_id, post_id: post.id, up_vote?: false)
+      redirect_back fallback_location: post_path(post)
+    else
+      #error
+    end
+  end
+      
+  def favorite
+    post = Post.find(params[:id])
+    user_id = session[:user_id]
+    if UserFavoritePost.create(user_id: user_id, post_id: post.id)
+      redirect_back fallback_location: post_path(post)
+    else
+      #error
+    end
+  end
+
   private 
 
   def post_params

@@ -1,0 +1,18 @@
+
+  <div class='post-preview'>
+    <h5><%= link_to post.title, post_path(post) %> in <%= post.category.name %></h5>
+    <p><%= post.content %></p>
+    <p><%= pluralize(post.num_post_faves, 'favorite') %></pi>
+    <p><%= pluralize(post.num_post_upvotes, 'up vote') %></p>
+    <p><%= pluralize(post.num_post_downvotes, 'down vote') %></p>
+    <% if session[:user_id] %>
+      <% if session[:user_id] == post.user.id %>
+        <p>this is the logged in users post. add features</p>
+      <% else %>
+        <% user = User.find(session[:user_id]) %>
+        <p><%= link_to 'Upvote this post', "/posts/#{post.id}/up_vote", method: 'post' %></p>
+        <p><%= link_to 'Downvote this post', "/posts/#{post.id}/down_vote", method: 'post' %></p>
+        <p><%= link_to 'Favorite this post', "/posts/#{post.id}/favorite", method: 'post' %></p>
+      <% end %>
+    <% end %>
+  </div>

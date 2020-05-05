@@ -2,7 +2,12 @@
 <% @categories.each do |c| %>
   <div class='category-preview'>
     <h4><%= link_to c.name, category_path(c) %></h4>
-    <p><strong>Most Liked: </strong><%= c.most_liked_post_in_category %></p>
-    <p><strong>Favorite: </strong><%= c.most_favorited_post_in_category %></p>
+    <% c.top_three_posts.each do |post| %>
+      <div class='category-top-posts'>
+        <h5><%= link_to post.title, post_path(post) %> - <%= link_to post.user.username, user_path(post.user) %></h5>
+        <p><%= post.content %></p>
+      </div>
+    <% end %>
+
   </div>
 <% end %>

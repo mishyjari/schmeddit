@@ -6,11 +6,8 @@
   <% end %>
 <% end %>
 
-<%= form_for do |f| %>
-
-  <%= f.label :username %>
-  <%= f.text_field :username %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit %>
+<%= form_tag(:action => 'new') do %>
+  <p>Usename: <%= text_field_tag(:username) %></p>
+  <p>Password: <%= password_field_tag(:password) %></p>
+  <%= submit_tag("Log In") %>
 <% end %>
