@@ -1,5 +1,5 @@
 <h3><%= @post.title %></h3>
-<h4>Votes: <%= @post.num_post_upvotes - @post.num_post_downvotes %>
+<h4>Votes: <%= @post.num_post_upvotes - @post.num_post_downvotes %></h4>
 <p><strong>Author: </strong><%= link_to @post.user.username, user_path(@post.user) %></p>
 <p><strong>Posted: </strong><%= @post.created_at.ctime %></p>
 <div id='post-show-content'>
@@ -10,11 +10,5 @@
   <div class='post-comment'>
     <h5><%= link_to comment.user.username, user_path(comment.user) %> at <%= comment.created_at.ctime %></h5>
     <p class='comment-content'><%= comment.content %></p>
-    <% comment.replies.each do |reply| %>
-      <div class='comment-reply'>
-        <h5><%= link_to reply.child.user.username, user_path(reply.child.user) %> at <%= reply.child.created_at.ctime %></h5>
-        <p class='comment-content'><%= reply.child.content %></p>
-      </div>
-    <% end %>
   </div>
 <% end %>
