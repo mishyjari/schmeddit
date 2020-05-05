@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  resources :welcome, only: :index
+
+  get '/', to: 'welcome#index', as: 'home'
   resources :users
   resources :posts
   resources :comments, only: [:new, :create, :edit, :update, :destroy]
