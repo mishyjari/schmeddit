@@ -1,7 +1,7 @@
 <h3><%= @category.name %></h3>
 <% @category.posts.each do |post| %>
   <div class='post-preview'>
-    <h5><%= post.title %></h5>
+    <h5><%= link_to post.title, post_path(post) %></h5>
     <p><%= post.content %></h5>
   </div>
 <% end %>
