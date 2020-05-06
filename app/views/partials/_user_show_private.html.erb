@@ -1,0 +1,14 @@
+<h3>Your Profile</h3>
+<h4><%= link_to 'Edit Profile', edit_user_path(user) %></h4>
+<img src='<%= user.profile_img_url %>' width='300px' /><br />
+<ul>
+  <li><strong>Name: </strong><%= user.full_name %></li>
+  <li><strong>Username: </strong><%= user.username %></li>
+  <li><strong>Email: </strong><%= user.email %></li>
+  <li><strong>Account Created: </strong><%= user.created_at.ctime %></li>
+</ul>
+<p><strong>Bio: </strong><%= user.bio %></p>
+<h4>Recent Posts</h4>
+<em>Not Implemented</em>
+<h4>Favorited Posts</h4>
+<em>Not Implemented</h4>

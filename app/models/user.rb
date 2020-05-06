@@ -9,6 +9,10 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  def full_name
+    self.first_name + ' ' + self.last_name
+  end
+
   def user_up_vote?(post)
     vote = self.user_post_votes.find_by(post_id: post.id)
     vote && vote.up_vote?
