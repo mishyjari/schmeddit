@@ -15,10 +15,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.create(post_params)
+    post = Post.new(post_params)
     post.title = post.title.titleize
 
-    if post.valid?
+    if post.save
       redirect_to post_path(post)
     else
       flash[:err] = post.errors.full_messages
@@ -33,10 +33,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    post.update(post_params)
+    post.assign_attributes(post_params)
     post.title = post.title.titleize
     
-    if post.valid?
+    if post.save
       redirect_to post_path(post)
     else
       flash[:err] = post.errors.full_messages

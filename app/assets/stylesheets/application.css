@@ -14,10 +14,14 @@
  *= require_self
  */
 
+.root {
+	--backround-ui: #D5CAD6
+}
 body {
 	display: grid;
 	grid-template-columns: minmax(700px,auto) 300px;
 	grid-template-rows: 80px minmax(800px,auto) 120px;
+	background: #D5CAD6
 }
 
 div {
