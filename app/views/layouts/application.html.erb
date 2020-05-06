@@ -13,19 +13,13 @@
     <div id='header'>
       <h1 id='main-logo'>Schmeddit</h1>
     </div>
-    <div id='navigation'>
-      <%= link_to 'Home', home_path %>
+    <div id='right-sidebar'>
       <% if session[:user_id] %>
-        <%= link_to 'Logout', logout_path, method: 'delete' %>
+        <%= render 'partials/user_sidebar' %>
       <% else %>
-        <%= link_to 'Login', login_path %>
-      <% end %>
-        <%= link_to 'All Categories', categories_path %>
-      <% if session[:user_id] %>
-        <em>Logged in as: </em><strong><%= User.find(session[:user_id]).username %></strong>
+        <%= render 'partials/public_sidebar' %>
       <% end %>
     </div>
-    <div id='right-sidebar'></div>
     <div id='main-yield'>
 
       <%= yield %>

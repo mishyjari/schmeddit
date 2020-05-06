@@ -1,0 +1,14 @@
+<img src='<%= @current_user.profile_img_url %>' width='250px' />
+<h3>Welcome, <%= @current_user.first_name %>!</h3>
+<div class='sidebar-link'>
+  <%= link_to 'LOGOUT', logout_path, method: :delete %>
+</div>
+<div class='sidebar-link'>
+  <%= link_to 'MY PROFILE', user_path(@current_user) %>
+</div>
+<div class='sidebar-link'>
+  <%= link_to 'NEW POST', new_post_path %>
+</div>
+<div id='sidebar-top-posts'>
+  <%= render 'partials/sidebar-top-posts' %>
+</div>
