@@ -11,7 +11,7 @@
 
   <body>
     <div id='header'>
-      <h1 id='main-logo'>Schmeddit</h1>
+    <h1 id='main-logo'><%= link_to 'Schmeddit', home_path %></h1>
     </div>
     <div id='right-sidebar'>
       <% if session[:user_id] %>

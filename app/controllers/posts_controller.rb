@@ -65,6 +65,13 @@ class PostsController < ApplicationController
       #error
     end
   end
+
+  def revoke_vote
+    post = Post.find(params[:id])
+    vote = UserPostVote.find_by(user_id: session[:user_id], post_id: post.id)
+    vote.destroy
+    redirect_back fallback_location: home_path
+  end
       
   def favorite
     post = Post.find(params[:id])
@@ -74,6 +81,13 @@ class PostsController < ApplicationController
     else
       #error
     end
+  end
+
+  def un_favorite
+    post = Post.find(params[:id])
+    fave = UserFavoritePost.find_by(user_id: session[:user_id], post_id: post.id)
+    fave.destroy
+    redirect_back fallback_location: home_path
   end
 
   private 

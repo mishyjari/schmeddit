@@ -2,7 +2,7 @@
   <em>Put some links or something here</em>
 </div>
 <div id='welcome-posts'>
-  <% Post.random_posts(6).each do |post| %>
+  <% Post.top_scoring(6).each do |post| %>
     <%= render 'partials/post_preview', post: post %> 
   <% end %>
 </div>

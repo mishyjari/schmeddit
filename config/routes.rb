@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post '/posts/:id/favorite', to: 'posts#favorite'
   post '/posts/:id/up_vote', to: 'posts#up_vote'
   post '/posts/:id/down_vote', to: 'posts#down_vote'
-
+  delete '/posts/:id/un_favorite', to: 'posts#un_favorite'
+  delete '/posts/:id/revoke_vote', to: 'posts#revoke_vote'
 
 end
