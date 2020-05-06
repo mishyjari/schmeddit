@@ -2,10 +2,14 @@ class PostsController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
 
   def new
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      redirect_to login_path
+    end 
+
     @post = Post.new
-    @categories = Category.all
-    @category = Category.all.sample
-    @user = User.all.sample
+    @category = Category.find(flash[:category_id]) if flash[:category_id]
     @errors = flash[:err]
   end
 

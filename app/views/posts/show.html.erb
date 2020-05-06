@@ -8,7 +8,6 @@
 <h4>Comments</h4>
 <% @post.comments.each do |comment| %>
   <div class='post-comment'>
-    <h5><%= link_to comment.user.username, user_path(comment.user) %> at <%= comment.created_at.ctime %></h5>
-    <p class='comment-content'><%= comment.content %></p>
+    <%= render 'partials/comment', comment: comment %>
   </div>
 <% end %>

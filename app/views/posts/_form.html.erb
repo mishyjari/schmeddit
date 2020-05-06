@@ -12,7 +12,11 @@
   <% end %>
 
   <%= f.label :category_id %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, { :selected => @category.id } %><br>
+  <% if @category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, { :selected => @category.id } %><br>
+  <% else %>
+     <%= f.collection_select :category_id, Category.all, :id, :name %><br> 
+   <% end %>
 
   <%= f.label :title %>
   <%= f.text_field :title %><br>

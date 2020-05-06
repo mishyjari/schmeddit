@@ -4,13 +4,13 @@ class CategoriesController < ApplicationController
     @categories = Category.all
   end
 
-  def new
-    @category = Category.new
-  end
-
   def show
     @category = Category.find(params[:id])
     flash[:category_id] = @category.id
+  end
+
+  def new
+    @category = Category.new
   end
 
   def create

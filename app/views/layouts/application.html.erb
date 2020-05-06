@@ -25,7 +25,9 @@
         <em>Logged in as: </em><strong><%= User.find(session[:user_id]).username %></strong>
       <% end %>
     </div>
-    <div id='right-sidebar'></div>
+    <div id='right-sidebar'>
+      <%= link_to "Create New Category", new_category_path %>
+    </div>
     <div id='main-yield'>
 
       <%= yield %>

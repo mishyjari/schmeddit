@@ -1,0 +1,24 @@
+<% if comment.parent_type == "Post" %>
+  <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
+  <p class='comment-content'><%= comment.content %></p>
+
+  <% if comment.replies %>
+    <% comment.replies.each do |reply| %>
+      <h5><%= link_to reply.user.username, user_path(reply.user) %> to <%= reply.parent.user.username %></h5>
+      <p class='comment-content reply'><%= reply.content %></p>
+      <%= render 'partials/comment', comment: reply %>
+    <% end %>
+  <% end %>
+
+<% else %>
+  <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
+  <p class='comment-content reply'><%= comment.content %></p>
+
+  <% if comment.replies %>
+    <% comment.replies.each do |reply| %>
+      <h5><%= link_to reply.user.username, user_path(reply.user) %> to <%= reply.parent.user.username %></h5>
+      <p class='comment-content reply'><%= reply.content %></p>
+      <%= render 'partials/comment', comment: reply %>
+    <% end %>
+  <% end %>
+<% end %>
