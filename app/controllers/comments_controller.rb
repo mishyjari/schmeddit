@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
+    byebug
   end
 
   def edit
