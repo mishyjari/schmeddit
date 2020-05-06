@@ -1,0 +1,14 @@
+Favorited <strong><%= pluralize(post.num_post_faves, 'time') %></strong> |
+<% if @current_user.user_favorited?(post) %>
+  <strong>You Favorited This!</strong> (<%= link_to 'undo?', "/posts/#{post.id}/un_favorite", method: 'delete' %>) 
+<% else %><%= link_to 'Favorite This?', "/posts/#{post.id}/favorite", method: 'post' %>
+<% end %>
+<br />
+Score: <strong><%= post.score.to_s %></strong> | 
+<% if @current_user.user_up_vote?(post) || @current_user.user_down_vote?(post) %>
+  <strong>Thanks for voting!</strong> (<%= link_to 'undo?', "/posts/#{post.id}/revoke_vote", method: 'delete' %>)
+<% else %>
+  <%= link_to 'Up Vote?', "/posts/#{post.id}/up_vote", method: 'post' %>
+   | 
+  <%= link_to 'Down Vote?', "/posts/#{post.id}/down_vote", method: 'post' %>
+<% end %>

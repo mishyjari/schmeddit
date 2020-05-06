@@ -1,18 +1,16 @@
-
-  <div class='post-preview'>
-    <h5><%= link_to post.title, post_path(post) %> in <%= post.category.name %></h5>
-    <p><%= post.content %></p>
-    <p><%= pluralize(post.num_post_faves, 'favorite') %></pi>
-    <p><%= pluralize(post.num_post_upvotes, 'up vote') %></p>
-    <p><%= pluralize(post.num_post_downvotes, 'down vote') %></p>
-    <% if session[:user_id] %>
-      <% if session[:user_id] == post.user.id %>
-        <p>this is the logged in users post. add features</p>
-      <% else %>
-        <% user = User.find(session[:user_id]) %>
-        <p><%= link_to 'Upvote this post', "/posts/#{post.id}/up_vote", method: 'post' %></p>
-        <p><%= link_to 'Downvote this post', "/posts/#{post.id}/down_vote", method: 'post' %></p>
-        <p><%= link_to 'Favorite this post', "/posts/#{post.id}/favorite", method: 'post' %></p>
-      <% end %>
+<div class='post-preview'>
+  <h3><%= post.category.name %> | <%= link_to post.title, post_path(post) %></h3>
+  <p><em>posted by: </em><%= link_to post.user.username, user_path(post.user) %><em>, <%= post.created_at.ctime %></em></p>
+  <div class='post-preview-content'>
+    <p><%= post.truncate_content(150) %></p>
+  </div>
+  <div class='post-preview-stats' %>
+    <% if post.user == @current_user %>
+      <%= render 'partials/post_stats_current_user', post: post %>
+    <% elsif session[:user_id] %>
+      <%= render 'partials/post_stats_foreign_user', post: post%>
+    <% else %>
+      <%= render 'partials/post_stats_public', post: post %>
     <% end %>
   </div>
+</div>

@@ -1,0 +1,4 @@
+                   |~
+  6Favorited <strong><%= pluralize(post.num_post_faves, 'time') %></strong><br /> | <% if @current_user.user_favorited?(post) %>
+<strong>You Favorited This!</stong> (<%= link_to 'undo?', '#' %>) <% else %><%= link_to 'Favorite This?', post.favorite_post(user), method: 'post' %>  Score: <strong><%= post.score.to_s %></strong>
+  <% end %>
