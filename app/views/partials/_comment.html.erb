@@ -1,7 +1,8 @@
 <% if comment.parent_type == "Post" %>
   <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
+  <%= link_to "Reply", new_comment_path(comment: comment), class: 'btn btn-primary' %>
+  <a class="btn bth-primary" data-toggle="collapse" href='#collapseReplies'>Show Replies</a>
   <p class='comment-content'><%= comment.content %></p>
-  <%= link_to "Reply", new_comment_path(comment: comment) %>
 
   <% if comment.replies %>
     <% comment.replies.each do |reply| %>
@@ -10,8 +11,10 @@
   <% end %>
 
 <% else %>
-  <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
-  <p class='comment-content reply'><%= comment.content %></p>
+  <div id="collapseReplies">
+    <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
+    <p class='comment-content reply'><%= comment.content %></p>
+  </div>
 
   <% if comment.replies %>
     <% comment.replies.each do |reply| %>

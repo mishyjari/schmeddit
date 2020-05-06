@@ -3,16 +3,16 @@
 <% end %>
 <h3>Welcome, <%= @current_user.first_name %>!</h3>
 <div class='sidebar-link'>
-  <%= link_to 'LOGOUT', logout_path, method: :delete %>
+  <%= link_to 'LOGOUT', logout_path, method: :delete, class: 'btn btn-primary' %>
 </div>
 <div class='sidebar-link'>
-  <%= link_to 'MY PROFILE', user_path(@current_user) %>
+  <%= link_to 'MY PROFILE', user_path(@current_user), class: 'btn btn-primary' %>
 </div>
 <div class='sidebar-link'>
-  <%= link_to 'NEW POST', new_post_path %>
+  <%= link_to 'NEW POST', new_post_path, class: 'btn btn-primary' %>
 </div>
 <div class='sidebar-link'>
-  <%= link_to "NEW CATEGORY", new_category_path %>
+  <%= link_to "ALL CATEGORIES", categories_path, class: 'btn btn-primary' %>
 </div>
 <div id='sidebar-top-posts'>
   <%= render 'partials/sidebar-top-posts' %>

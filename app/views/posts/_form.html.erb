@@ -11,18 +11,26 @@
     You must first Sign in<br>
   <% end %>
 
-  <%= f.label :category_id %>
-  <% if @category %>
-    <%= f.collection_select :category_id, Category.all, :id, :name, { :selected => @category.id } %><br>
-  <% else %>
-     <%= f.collection_select :category_id, Category.all, :id, :name %><br> 
-   <% end %>
+  <table>
+    <tr>
+      <%= f.label :category_id %>
+      <% if @category %>
+        <td><%= f.collection_select :category_id, Category.all, :id, :name, { :selected => @category.id } %><br></td>
+      <% else %>
+        <td><%= f.collection_select :category_id, Category.all, :id, :name %><br> </td>
+       <% end %>
+    </tr>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %><br>
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.text_field :title %><br></td>
+    </tr>
 
-  <%= f.label :content %>
-  <%= f.text_area :content %><br>
+    <tr>
+      <td><%= f.label :content %></td>
+      <td><%= f.text_area :content %><br></td>
+    </tr>
+  </table>
 
   <%= f.submit %>
 <% end %>

@@ -18,6 +18,7 @@
     <h1 id='main-logo'><%= link_to 'Schmeddit', home_path %></h1>
     </div>
     <div id='right-sidebar'>
+      <%= render 'partials/search_bar' %>
       <% if session[:user_id] %>
         <%= render 'partials/user_sidebar' %>
       <% else %>

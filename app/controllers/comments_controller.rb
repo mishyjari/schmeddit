@@ -1,8 +1,13 @@
 class CommentsController < ApplicationController
 
   def new
-    @comment = Comment.new
     @parent_comment = Comment.find(params[:comment])
+
+    if @parent_comment
+      @comment = Comment.new
+    else 
+      redirect_to home_path
+    end 
   end
 
   def edit
