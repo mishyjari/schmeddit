@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   before_action :set_user 
-  before_action :authenticate_user
 
   def set_user
     @current_user = User.find_by(id: session[:user_id])
@@ -8,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if !@current_user
-      redirect_to new_login_path
+      redirect_to login_path
     end
   end
 end
