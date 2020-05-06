@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-    byebug
+    @parent_comment = Comment.find(params[:comment])
   end
 
   def edit

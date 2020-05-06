@@ -1,4 +1,6 @@
-<img src='<%= @current_user.profile_img_url %>' width='250px' />
+<%= link_to user_path(@current_user) do %>
+  <img src='<%= @current_user.profile_img_url %>' width='250px' />
+<% end %>
 <h3>Welcome, <%= @current_user.first_name %>!</h3>
 <div class='sidebar-link'>
   <%= link_to 'LOGOUT', logout_path, method: :delete %>

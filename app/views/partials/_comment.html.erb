@@ -1,7 +1,7 @@
 <% if comment.parent_type == "Post" %>
   <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
   <p class='comment-content'><%= comment.content %></p>
-  <%= link_to "Reply", new_comment_path(id: comment.id) %>
+  <%= link_to "Reply", new_comment_path(comment: comment) %>
 
   <% if comment.replies %>
     <% comment.replies.each do |reply| %>
