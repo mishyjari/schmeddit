@@ -1,7 +1,5 @@
-<div id='welcome-links'>
-  <em>Put some links or something here</em>
-</div>
 <div id='welcome-posts'>
+  <h3 id='welcome_title'>Most Recent Posts</h3>
   <% Post.most_recent_posts(6).each do |post| %>
     <%= render 'partials/post_preview', post: post %> 
   <% end %>

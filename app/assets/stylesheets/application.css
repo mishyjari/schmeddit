@@ -14,21 +14,23 @@
  *= require_self
  */
 
-.root {
-	--backround-ui: #D5CAD6
+:root {
+	--dark-ui: #373742;
+	--light-ui: #ffe7ce;
 }
 body {
 	display: grid;
 	grid-template-columns: minmax(700px,auto) 300px;
-	grid-template-rows: 80px minmax(800px,auto) 120px;
+	grid-template-rows: 80px minmax(800px,auto);
+	background: var(--dark-ui);
 }
 
 div {
 	margin: 5px;
 	padding: 10px;
-	border: 1px solid black;
 	border-radius: 10px;
-	background-color: var(--background-ui)
+	background: var(--light-ui);
+	box-shadow: inset 1px 1px 2px #373742
 }
 
 div#header {
@@ -36,9 +38,14 @@ div#header {
 	grid-row: 1;
 }
 
+div#header > a {
+	color: var(--dark-ui);
+}
+
 div#right-sidebar {
 	grid-column: 2;
 	grid-row: 2 / 3;
+
 }
 
 div#footer {
@@ -48,5 +55,9 @@ div#footer {
 
 div#main-yield {
 	grid-row: 2;
-	grid-column: 1
+	grid-column: 1;
 }
+
+div#welcome-posts {
+}
+
