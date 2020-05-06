@@ -1,17 +1,18 @@
-<h1><%= "#{@user.username}'s Profile Page" %></h1>
-<p>name: <%= "#{@user.first_name} #{@user.last_name}" %><p>
-<p>email: <%= @user.email %><p>
-<p>bio: <%= @user.bio %><p>
-<img src="<%= @user.profile_img_url %>" alt="<%= "#{@user.username}'s profile image" %>" height="42" width="42">
-
-<% if @user.posts %>
-  <h2><%= "#{@user.username}'s Submitted Posts" %></h2>
-  <% @user.sorted_posts.each do |post| %>
-    <p>
-      <%= link_to post.title, post_path(post) %>
-      <%= "Votes: #{post.score}" %>
-    </p>
-  <% end %>
+<% if @current_user == @user %>
+  <h3>Your Profile</h3>
+  <h4><%= link_to 'Edit Profile', edit_user_path(@user) %></h4>
 <% else %>
-  <h2>This user has submitted no posts</h2>
+  <h3><%= @user.username %>'s Profile</h3>
 <% end %>
+<img src='<%= @user.profile_img_url %>' width='300px' /><br />
+<ul>
+  <li><strong>Name: </strong><%= @user.full_name %></li>
+  <li><strong>Username: </strong><%= @user.username %></li>
+  <li><strong>Email: </strong><%= @user.email %></li>
+  <li><strong>Account Created: </strong><%= @user.created_at.ctime %></li>
+</ul>
+<p><strong>Bio: </strong><%= @user.bio %></p>
+<h4>Recent Posts</h4>
+<em>Not Implemented</em>
+<h4>Favorited Posts</h4>
+<em>Not Implemented</h4>
