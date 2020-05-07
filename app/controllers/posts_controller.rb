@@ -30,18 +30,23 @@ class PostsController < ApplicationController
   end
 
   def edit
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      redirect_to login_path
+    end 
   end
 
   def update
-    post.assign_attributes(post_params)
-    post.title = post.title.titleize
+    @post.assign_attributes(post_params)
+    @post.title = @post.title.titleize
     
-    if post.save
-      redirect_to post_path(post)
+    if @post.save
+      redirect_to post_path(@post)
     else
       flash[:err] = post.errors.full_messages
 
-      redirect_to edit_post_path(post)      
+      redirect_to edit_post_path(@post)      
     end
   end
 

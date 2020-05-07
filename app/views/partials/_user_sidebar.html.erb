@@ -2,16 +2,16 @@
   <img src='<%= @current_user.profile_img_url %>' width='250px' />
 <% end %>
 <h3>Welcome, <%= @current_user.first_name %>!</h3>
-<div class='sidebar-link mx-auto'>
+<div class='sidebar-link no-box-shadow'>
   <%= link_to 'LOGOUT', logout_path, method: :delete, class: 'btn btn-primary' %>
 </div>
-<div class='sidebar-link'>
+<div class='sidebar-link no-box-shadow'>
   <%= link_to 'MY PROFILE', user_path(@current_user), class: 'btn btn-primary' %>
 </div>
-<div class='sidebar-link'>
+<div class='sidebar-link no-box-shadow'>
   <%= link_to 'NEW POST', new_post_path, class: 'btn btn-primary' %>
 </div>
-<div class='sidebar-link'>
+<div class='sidebar-link no-box-shadow'>
   <%= link_to "ALL CATEGORIES", categories_path, class: 'btn btn-primary' %>
 </div>
 <div id='sidebar-top-posts'>
