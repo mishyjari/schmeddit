@@ -1,12 +1,23 @@
-<div class='sidebar-link'>
-  <%= link_to 'LOG IN', login_path, class: 'btn btn-primary' %>
+<div class='sidebar-link no-box-shadow'>
+  <a class="btn btn-primary" data-toggle="collapse" href="#collapseLogin" role="button">Login</a>
+  <div class='collapse' id="collapseLogin">
+    <%= form_tag({:action => 'new', :controller => 'sessions'}, {:class => 'no-box-shadow'})  do %>
+      <div class="form-group no-box-shadow">
+        <%= text_field_tag :username, nil, placeholder: 'Username', class: 'form-control' %>
+      </div>
+      <div class="form-group no-box-shadow">
+        <%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control' %>
+      </div>
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 </div>
-<div class='sidebar-link'>
+<div class='sidebar-link no-box-shadow'>
   <%= link_to 'SIGN UP', new_user_path, class: 'btn btn-primary' %>
 </div>
-<div id='sidebar-top-posts'>
+<div id='sidebar-top-posts no-box-shadow'>
   <%= render 'partials/sidebar-top-posts' %>
 </div>
-<div id='sidebar-top-posters'>
+<div id='sidebar-top-posters no-box-shadow'>
   <%= render 'partials/sidebar-top-posters' %>
 </div>

@@ -1,9 +1,13 @@
 <% if comment.parent_type == "Post" %>
-  <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
-  <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-primary' %>
-  <% if comment.replies.count > 0 %>
-    <a class="btn btn-primary" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Show Replies</a>
-  <% end %>
+  <h5>
+    <%= link_to comment.user.username, user_path(comment.user) %> 
+    to 
+    <%= comment.parent.user.username %>
+    <% if comment.replies.count > 0 %>
+      <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Toggle Replies</a>
+    <% end %>
+    <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-outline-primary btn-sm' %>
+  </h5>
   <p class='comment-content'><%= comment.content %></p>
 
   <% if comment.replies %>
@@ -14,11 +18,15 @@
 
 <% else %>
   <div class="collapse" id="i<%= comment.parent.id.to_s %>">
-    <h5><%= link_to comment.user.username, user_path(comment.user) %> to <%= comment.parent.user.username %></h5>
-    <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-primary' %>
-    <% if comment.replies.count > 0 %>
-      <a class="btn btn-primary" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Show Replies</a>
-    <% end %>
+    <h5>
+      <%= link_to comment.user.username, user_path(comment.user) %> 
+      to 
+      <%= comment.parent.user.username %>
+      <% if comment.replies.count > 0 %>
+        <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Toggle Replies</a>
+      <% end %>
+      <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-outline-primary btn-sm' %>
+    </h5>
     <p class='comment-content reply'><%= comment.content %></p>
 
     <% if comment.replies %>
