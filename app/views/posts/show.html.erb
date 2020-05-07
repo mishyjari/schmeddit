@@ -1,7 +1,15 @@
 <h3><%= @post.title %></h3>
-<p><strong>Author: </strong><%= link_to @post.user.username, user_path(@post.user) %><br />
-<strong>Posted: </strong><%= @post.created_at.ctime %><br />
-<strong>Category: </strong><%= link_to @post.category.name, category_path(@post.category) %></p>
+<p>
+  <% if @post.user.id == session[:user_id] %>
+    <strong>Author: You</strong>
+    <%= link_to "Edit Post", edit_post_path(@post), { class:'btn btn-primary btn-sm' } %>
+    <br />
+  <% else %>
+    <strong>Author: </strong><%= link_to @post.user.username, user_path(@post.user) %><br />
+  <% end %>
+  <strong>Posted: </strong><%= @post.created_at.ctime %><br />
+  <strong>Category: </strong><%= link_to @post.category.name, category_path(@post.category) %>
+</p>
 
 <div id='post-show-content'>
   <p><%= @post.content %></p>
