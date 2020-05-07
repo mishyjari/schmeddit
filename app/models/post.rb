@@ -27,11 +27,13 @@ class Post < ApplicationRecord
   end
 
   def num_post_upvotes
-    self.user_post_votes.select{ |vote| vote.up_vote? }.count
+    #self.user_post_votes.select{ |vote| vote.up_vote? }.count
+    0
   end
 
   def num_post_downvotes
-    self.user_post_votes.select{ |vote| !vote.up_vote? }.count
+    #self.user_post_votes.select{ |vote| !vote.up_vote? }.count
+    0
   end
 
   def score
