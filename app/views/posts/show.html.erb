@@ -30,6 +30,6 @@
 <h4>Comments</h4>
 <% @post.comments.each do |comment| %>
   <div class='post-comment'>
-    <%= render 'partials/comment', comment: comment %>
+    <%= render 'partials/comment', comment: comment, new_comment: Comment.new %>
   </div>
 <% end %>

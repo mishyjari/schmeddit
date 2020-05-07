@@ -6,7 +6,12 @@
     <% if comment.replies.count > 0 %>
       <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Toggle Replies</a>
     <% end %>
-    <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-outline-primary btn-sm' %>
+    <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#collapseForm">Reply</a>
+    <% @comment = new_comment %>
+    <% @parent_comment = comment %>
+    <div class="collapse no-box-shadow" id="collapseForm">
+      <%= render 'partials/new_comment_form' %>
+    </div>
   </h5>
   <p class='comment-content'><%= comment.content %></p>
 
@@ -26,6 +31,12 @@
         <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Toggle Replies</a>
       <% end %>
       <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-outline-primary btn-sm' %>
+      <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#collapseForm">Reply</a>
+      <% @comment = new_comment %>
+      <% @parent_comment = comment %>
+      <div class="collapse no-box-shadow" id="collapseForm">
+        <%= render 'partials/new_comment_form' %>
+      </div>
     </h5>
     <p class='comment-content reply'><%= comment.content %></p>
 

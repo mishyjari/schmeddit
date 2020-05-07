@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     end 
 
     @post = Post.new
+    @comment = Comment.new
     @category = Category.find(flash[:category_id]) if flash[:category_id]
     @errors = flash[:err]
   end
