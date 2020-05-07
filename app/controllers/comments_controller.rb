@@ -1,9 +1,14 @@
 class CommentsController < ApplicationController
 
   def new
-    @parent_comment = Comment.find(params[:parent_comment])
+    @errors = flash[:err]
+    if params[:parent_comment]
+      @parent_comment = Comment.find(params[:parent_comment])
+    else
+      @parent_post = Post.find(params[:parent_post])
+    end
 
-    if @parent_comment
+    if @parent_comment || @parent_post
       @comment = Comment.new
     else 
       redirect_to home_path
@@ -16,8 +21,12 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-    parent = Comment.find(params[:comment][:parent_id])
-    post = parent.find_parent_post
+    if comment.parent.class == Post
+      post = comment.parent
+    else
+      parent = Comment.find(params[:comment][:parent_id])
+      post = parent.find_parent_post || parent
+    end
     if comment.save
       redirect_to post_path(post)
     else
@@ -46,7 +55,7 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
-      params.require(:comment).permit(:comment, :user_id, :content, :parent_type, :parent_id)
-    end
+  def comment_params
+    params.require(:comment).permit(:comment, :user_id, :content, :parent_type, :parent_id)
+  end
 end

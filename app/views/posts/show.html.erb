@@ -17,6 +17,8 @@
   <% end %>
 </div>
 
+<%= link_to "Reply", new_comment_path(parent_post: @post), class: 'btn btn-primary' %>
+
 <h4>Comments</h4>
 <% @post.comments.each do |comment| %>
   <div class='post-comment'>
