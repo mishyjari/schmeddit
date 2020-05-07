@@ -54,7 +54,8 @@ class PostsController < ApplicationController
   def up_vote
     post = Post.find(params[:id])
     user_id = session[:user_id]
-    if UserPostVote.create(user_id: user_id, post_id: post.id, up_vote?: true)
+    post.score += 1
+    if UserPostVote.create(user_id: user_id, post_id: post.id, up_vote?: true) && post.save
       redirect_back fallback_location: post_path(post)
     else
       #error
@@ -64,7 +65,8 @@ class PostsController < ApplicationController
   def down_vote
     post = Post.find(params[:id])
     user_id = session[:user_id]
-    if UserPostVote.create(user_id: user_id, post_id: post.id, up_vote?: false)
+    post.score -= 1
+    if UserPostVote.create(user_id: user_id, post_id: post.id, up_vote?: false) && post.save
       redirect_back fallback_location: post_path(post)
     else
       #error
@@ -74,6 +76,9 @@ class PostsController < ApplicationController
   def revoke_vote
     post = Post.find(params[:id])
     vote = UserPostVote.find_by(user_id: session[:user_id], post_id: post.id)
+    vote.up_vote? ? post.score -= 1 : post.score += 1
+    post.save
+
     vote.destroy
     redirect_back fallback_location: home_path
   end
@@ -81,7 +86,8 @@ class PostsController < ApplicationController
   def favorite
     post = Post.find(params[:id])
     user_id = session[:user_id]
-    if UserFavoritePost.create(user_id: user_id, post_id: post.id)
+    post.num_favorites += 1
+    if UserFavoritePost.create(user_id: user_id, post_id: post.id) && post.save
       redirect_back fallback_location: post_path(post)
     else
       #error

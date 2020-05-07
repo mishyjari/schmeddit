@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2020_05_07_021502) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "parent_id"
     t.string "parent_type"
-    t.integer "score"
+    t.integer "score", default: 0
     t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_05_07_021502) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "score"
-    t.integer "num_favorites"
+    t.integer "score", default: 0
+    t.integer "num_favorites", default: 0
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
