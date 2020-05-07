@@ -2,7 +2,7 @@
   <img src='<%= @current_user.profile_img_url %>' width='250px' />
 <% end %>
 <h3>Welcome, <%= @current_user.first_name %>!</h3>
-<div class='sidebar-link'>
+<div class='sidebar-link mx-auto'>
   <%= link_to 'LOGOUT', logout_path, method: :delete, class: 'btn btn-primary' %>
 </div>
 <div class='sidebar-link'>
