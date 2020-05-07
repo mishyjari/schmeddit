@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
 
   def new
+    @errors = flash[:err]
     @parent_comment = Comment.find(params[:parent_comment])
 
     if @parent_comment
@@ -46,7 +47,7 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
-      params.require(:comment).permit(:comment, :user_id, :post_id)
+    def comment_params(*args)
+      params.require(:comment).permit(*args)
     end
 end
