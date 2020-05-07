@@ -2,9 +2,13 @@ class CommentsController < ApplicationController
 
   def new
     @errors = flash[:err]
-    @parent_comment = Comment.find(params[:parent_comment])
+    if params[:parent_comment]
+      @parent_comment = Comment.find(params[:parent_comment])
+    else
+      @parent_post = Post.find(params[:parent_post])
+    end
 
-    if @parent_comment
+    if @parent_comment || @parent_post
       @comment = Comment.new
     else 
       redirect_to home_path
