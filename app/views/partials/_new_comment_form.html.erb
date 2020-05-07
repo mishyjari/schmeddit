@@ -1,4 +1,4 @@
-<div class='form no-box-shadow'>
+<div class='no-box-shadow'>
   <%= form_for(@comment) do |f| %>
   <div class="form-group no-box-shadow">
     <% if @parent_comment %>
@@ -13,7 +13,7 @@
     <% end %>
     <%= f.hidden_field :user_id, :value => @current_user.id %>
     <%= f.hidden_field :parent_id, :value => @parent_post.id %>
-    <%= f.label :content %>
+    <%= f.label :content, :Comment %>
     <%= f.text_area :content, { class: 'form-control', rows: '4' } %><br>
     <%= f.submit :Submit, class: 'btn btn-primary'%>
   </div>
