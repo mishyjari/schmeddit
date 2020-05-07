@@ -1,0 +1,17 @@
+<h3>Login</h3>
+
+<% if flash[:err] %>
+  <% flash[:err].each do |err| %>
+    <p><strong><%= err %></strong></p>
+  <% end %>
+<% end %>
+
+<%= form_tag({:action => 'new', :controller => 'sessions'}, {:class => 'no-box-shadow'})  do %>
+      <div class="form-group no-box-shadow">
+        <%= text_field_tag :username, nil, placeholder: 'Username', class: 'form-control' %>
+      </div>
+      <div class="form-group no-box-shadow">
+        <%= password_field_tag :password, nil, placeholder: 'Password', class: 'form-control' %>
+      </div>
+      <%= submit_tag "Submit", class: "btn btn-primary" %>
+    <% end %>

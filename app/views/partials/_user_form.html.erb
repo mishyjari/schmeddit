@@ -5,58 +5,46 @@
 <% end %>
 
 <%= form_for @user do |f| %>
-<table>
-  <tr>
-    <td><%= f.label :username %></td>
-    <td><%= f.text_field :username %><br /><td>
-  </tr>
-  <tr>
-    <td><%= f.label :email %></td>
-    <td><%= f.text_field :email %><br /></td>
-  </tr>
-  <tr>
-    <td><%= f.label :first_name %></td>
-    <td><%= f.text_field :first_name %><br /></td>
-  </tr>
-  <tr>
-    <td><%= f.label :last_name %></td>
-    <td><%= f.text_field :last_name %><br /></td>
-  </tr>
-  <tr>
-    <td><%= f.label :profile_img_url %></td>
-    <td><%= f.text_field :profile_img_url %><br /></td>
-  </tr>
-  <tr>
-    <td><%= f.label :bio %></td>
-    <td><%= f.text_area :bio %><br /></td>
-  </tr>
-</table>
-  <div id='new-password-form'>
-    <table>
-    <% if @user.id && @user == @current_user %>
-      <h4>Update Password?</h4>
-      <tr>
-        <td><%= f.label :current_password %></td>
-        <td><%= f.password_field :current_password %><br /></td>
-      </tr>
-      <tr>
-        <td><%= f.label :new_password %></td>
-        <td><%= f.password_field :password %><br /></td>
-      </tr>
-      <tr>
-        <td><%= f.label :confirm_password %></td>
-        <td><%= f.password_field :confirm_password %><br /></td>
-    <% else %>
-      <tr>
-        <td><%= f.label :password %></td>
-        <td><%= f.password_field :password %><br /></td>
-      </tr>
-      <tr>
-        <td><%= f.label :confirm_password %></td>
-        <td><%= f.password_field :confirm_password %><br /></td>
-      </tr>
-    <% end %>
-    </table>
+  <div class="form-group no-box-shadow"
+    <%= f.label :username %>
+    <%= f.text_field :username, { class: 'form-control form-narrow' } %><br /
+
+    <%= f.label :email %>
+    <%= f.text_field :email, { class: 'form-control form-narrow' } %><br />
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, { class: 'form-control form-narrow' } %><br />
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, { class: 'form-control form-narrow' } %><br />
+
+    <%= f.label :profile_img_url %>
+    <%= f.text_field :profile_img_url, { class: 'form-control form-narrow' } %><br />
+
+    <%= f.label :bio %>
+    <%= f.text_area :bio, { class: 'form-control', rows: '4' } %><br />
   </div>
-  <%= f.submit %>
+
+  <div id='new-password-form'>
+    <div class='form-group no-box-shadow'>
+      <% if @user.id && @user == @current_user %>
+        <h4>Update Password?</h4>
+          <%= f.label :current_password %>
+          <%= f.password_field :current_password, { class: 'form-control form-narrow' } %><br />
+          
+          <%= f.label :new_password %>
+          <%= f.password_field :password, { class: 'form-control form-narrow' } %><br />
+          
+          <%= f.label :confirm_password %>
+          <%= f.password_field :confirm_password, { class: 'form-control form-narrow' } %><br />
+      <% else %>
+          <%= f.label :password %>
+          <%= f.password_field :password, { class: 'form-control form-narrow' } %><br />
+          
+          <%= f.label :confirm_password %>
+          <%= f.password_field :confirm_password, { class: 'form-control form-narrow' } %><br />
+      <% end %>
+      <%= f.submit :Submit, { class: 'btn btn-primary' } %>
+    </div>
+  </div>
 <% end %>
