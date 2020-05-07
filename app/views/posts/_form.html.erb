@@ -12,17 +12,17 @@
   <% end %>
 
       <div class="form-group no-box-shadow">
-        <%= f.label :category_id, { class: 'form-control' } %>
+        <%= f.label :category_id %>
         <% if @category %>
           <%= f.collection_select :category_id, Category.all, :id, :name, { :selected => @category.id }, { class: 'form-control' } %><br>
         <% else %>
           <%= f.collection_select :category_id, Category.all, :id, :name, {}, { class: 'form-control' } %><br>
          <% end %>
 
-        <%= f.label :title, { class: 'form-control' } %>
+        <%= f.label :title %>
         <%= f.text_field :title, { class: 'form-control' } %><br>
 
-        <%= f.label :content, { class: 'form-control' } %>
+        <%= f.label :content %>
         <%= f.text_area :content, { class: 'form-control' } %><br>
 
         <%= f.submit :Submit, { class: 'btn btn-primary' } %>

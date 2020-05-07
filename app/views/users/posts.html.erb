@@ -1,0 +1,4 @@
+<h3>Posts by <%= link_to @user.username, user_path(@user) %></h3>
+<% @user.posts.order({ created_at: :desc }).each do |post| %>
+  <%= render 'partials/post_preview', post: post %>
+<% end %>

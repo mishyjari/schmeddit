@@ -48,6 +48,17 @@ class UsersController < ApplicationController
     redirect_to welcome_index_path
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    render 'favorites'
+  end
+
+  def posts
+    @user = User.find(params[:id])
+    @posts = @user.posts.order({ created_at: :desc })
+    render 'posts'
+  end
+
   private 
 
   def user_params
