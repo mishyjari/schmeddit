@@ -1,5 +1,6 @@
 <%= form_for(@comment) do |f| %>
   <label>You're responding to <%= @parent_comment.user.username %></label><br>
+  <%= f.hidden_field :parent_comment, :value => @parent_comment.id %>
   <%= f.label :content %>
   <%= f.text_area :content %><br>
   <%= f.submit %>

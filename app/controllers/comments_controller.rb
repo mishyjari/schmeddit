@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def new
-    @parent_comment = Comment.find(params[:comment])
+    @parent_comment = Comment.find(params[:parent_comment])
 
     if @parent_comment
       @comment = Comment.new
@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-    post = Post.find(comment_params[:post_id]) 
+    parent_comment = Comment.find(params[:comment][:parent_comment])
+    post = parent_comment.find_parent_post
     if comment.save
       redirect_to post_path(post)
     else
