@@ -23,11 +23,15 @@ class Post < ApplicationRecord
   end
 
   def self.top_scoring(n)
-    Post.all.sort_by{|p| p.score}.slice(0,n)
+    Post.all.sort_by{|p| -p.score}.slice(0,n)
+  end
+
+  def date_favorited(user)
+    self.user_favorite_posts.find_by(user_id: user.id)
   end
 
   def self.most_recent_posts(n)
-    Post.all.order({ created_at: :desc }).slice(0,n)
+    self.order({ created_at: :desc }).slice(0,n)
   end
 
   def truncate_content(max_characters)

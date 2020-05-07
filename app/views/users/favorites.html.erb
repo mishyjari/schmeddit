@@ -1,0 +1,4 @@
+<h3>Posts Favorited by <%= link_to @user.username %></h3>
+<% @user.user_favorite_posts.order({created_at: :desc}).each do |fave| %>
+  <%= render '/partials/post_preview', post: fave.post %>
+<% end %>

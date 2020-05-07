@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   delete '/posts/:id/un_favorite', to: 'posts#un_favorite'
   delete '/posts/:id/revoke_vote', to: 'posts#revoke_vote'
 
+  get '/users/:id/favorites', to: 'users#favorites', as: 'user_favorites'
+  get '/users/:id/posts', to: 'users#posts', as: 'user_posts'
+
 end

@@ -32,7 +32,18 @@ class User < ApplicationRecord
     fave 
   end
 
+  def user_favorites(n)
+    self.user_favorite_posts.map do |fave|
+      fave.post
+    end.slice(0,n)
+  end
+
   def sorted_posts
     self.posts.sort_by { |post| post.score * -1 }
   end
+
+  def user_recent_posts(n)
+    self.posts.most_recent_posts(n)
+  end
+
 end
