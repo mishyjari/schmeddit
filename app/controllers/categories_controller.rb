@@ -18,10 +18,11 @@ class CategoriesController < ApplicationController
     category = Category.new(category_params)
     category.name = category.name.titleize
     if category.save
-      redirect_to category_path(category)
+      flash[:category_id] = category.id
+      redirect_to new_post_path
     else 
       flash[:err] = category.errors.full_messages
-      redirect_back fallback_location: new_category_path
+      redirect_back fallback_location new_category_path
     end
   end
 
