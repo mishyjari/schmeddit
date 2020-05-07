@@ -1,13 +1,15 @@
 <h3>Categories</h3>
 <% @categories.each do |c| %>
   <div class='category-preview'>
-    <h4><%= link_to c.name, category_path(c) %></h4>
-    <% c.top_three_posts.each do |post| %>
-      <div class='category-top-posts'>
-        <h5><%= link_to post.title, post_path(post) %> - <%= link_to post.user.username, user_path(post.user) %></h5>
-        <p><%= post.content %></p>
-      </div>
-    <% end %>
 
+    <h4><%= link_to c.name, category_path(c) %> | <%= c.posts.length.to_s %> posts </h4>
+    <a data-toggle='collapse' href='#i<%= c.id %>'><em>show top posts</em></a>
+    <div class='collapse' id='i<%= c.id %>'>
+      <% c.top_three_posts.each do |post| %>
+
+        <%= render 'partials/post_preview', post: post %>
+
+      <% end %>
+    </div>
   </div>
 <% end %>
