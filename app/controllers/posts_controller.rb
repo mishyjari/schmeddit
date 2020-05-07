@@ -96,6 +96,8 @@ class PostsController < ApplicationController
 
   def un_favorite
     post = Post.find(params[:id])
+    post.num_favorites -= 1
+    post.save
     fave = UserFavoritePost.find_by(user_id: session[:user_id], post_id: post.id)
     fave.destroy
     redirect_back fallback_location: home_path
