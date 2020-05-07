@@ -1,12 +1,22 @@
 <h4>Highest Scoring Posts</h4>
+
 <% Post.all.top_scoring(5).each do |post| %>
   <div class='sidebar-top-post-detail'>
-    <strong><p><%= post.category.name %> | <%= link_to post.title, post_path(post) %></p></strong>
-    <p>Posted By: <strong><%= link_to post.user.username, user_path(post.user) %></strong></p>
-    <div class='top-post-content'>
-      <p><%= post.truncate_content(25) %></p>
-    </div>
-    <p><%= post.created_at.ctime %></p>
-    <h5>Score: <strong><%= post.score.to_s %></strong></h5>
+
+    <strong><p><%= post.category.name %> | <%= link_to post.title, post_path(post) %></strong><br />
+   
+      <em>Posted By:</em> <strong><%= link_to post.user.username, user_path(post.user) %></strong><br />
+
+      <em>Score: </em><strong><%= post.score.to_s %></strong><br />
+
+      <a data-toggle='collapse' href='#i<%= post.id %>'><em>(show)</em></a></p>
+    <div class='collapse' id='i<%= post.id %>'>
+    
+      <p><%= post.truncate_content(150) %></p>
+       
+      <h6><em><%= post.created_at.ctime %></em></h6>
+
+      <em><%= link_to 'See full post', post_path(post) %></em>
+    </div> 
   </div>
 <% end %>

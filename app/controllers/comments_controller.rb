@@ -17,8 +17,8 @@ class CommentsController < ApplicationController
 
   def create
     comment = Comment.new(comment_params)
-    parent_comment = Comment.find(params[:comment][:parent_comment])
-    post = parent_comment.find_parent_post
+    parent = Comment.find(params[:comment][:parent_id])
+    post = parent.find_parent_post
     if comment.save
       redirect_to post_path(post)
     else
@@ -47,7 +47,7 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params(*args)
-      params.require(:comment).permit(*args)
-    end
+  def comment_params
+    params.require(:comment).permit(:comment, :user_id, :content, :parent_type, :parent_id)
+  end
 end
