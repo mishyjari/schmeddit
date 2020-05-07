@@ -13,9 +13,11 @@
      <label>You're responding to <%= @parent_post.user.username %></label><br> 
     <%= f.hidden_field :parent_type, :value => 'Post' %>
   <% end %>
-
+  <% if !@parent_post %>
+    <% @parent_post = @parent_comment %>
+  <% end %>
   <%= f.hidden_field :user_id, :value => @current_user.id %>
-  <%= f.hidden_field :parent_id, :value => @parent_comment.id %>
+  <%= f.hidden_field :parent_id, :value => @parent_post.id %>
   <%= f.label :content %>
   <%= f.text_area :content %><br>
   <%= f.submit %>
