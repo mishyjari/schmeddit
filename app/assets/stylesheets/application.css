@@ -71,7 +71,7 @@ div#footer {
 div#main-yield {
 	grid-row: 2;
 	grid-column: 1;
-	background-color: var(--dark-ui);
+	background-color: var(--light-ui);
 	box-shadow: inset 2px 1px 4px var(--light-ui)
 }
 

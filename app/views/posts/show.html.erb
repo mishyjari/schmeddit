@@ -39,7 +39,7 @@
 <% end %>
 <h4>Comments</h4>
 <% @post.comments.each do |comment| %>
-  <div class='post-comment'>
+  <div class='post-comment light-background'>
     <%= render 'partials/comment', comment: comment, new_comment: Comment.new %>
   </div>
 <% end %>
