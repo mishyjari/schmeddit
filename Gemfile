@@ -59,3 +59,4 @@ gem 'bcrypt'
 # Faker for seeds
 gem 'faker'
 
+gem 'will_paginate'

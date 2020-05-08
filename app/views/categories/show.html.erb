@@ -1,5 +1,11 @@
-<h3><%= @category.name %></h3>
+<h3 id='most-recent-head'><%= @category.name %></h3>
 <h5><%= link_to 'New Post', new_post_path %></h5>
-<% @category.posts.each do |post| %>
+<% @posts.each do |post| %>
   <%= render 'partials/post_preview', post: post %>
 <% end %>
+<div class="apple_pagination">
+  <div class="page_info">
+    <%= page_entries_info @posts %>
+  </div>
+  <%= will_paginate @posts, :container => false %>
+</div>
