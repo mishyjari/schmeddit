@@ -1,107 +1,83 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
-#
-# This file is the source Rails uses to define your schema when running `rails
-# db:schema:load`. When creating a new database, `rails db:schema:load` tends to
-# be faster and is potentially less error prone than running all of your
-# migrations from scratch. Old migrations may fail to apply correctly if those
-# migrations use external dependencies or application code.
-#
-# It's strongly recommended that you check this file into your version control system.
+UserCommentVote.destroy_all
+UserFavoriteCategory.destroy_all
+UserFavoritePost.destroy_all
+UserPostVote.destroy_all
+Comment.destroy_all
+Post.destroy_all
+Category.destroy_all
+User.destroy_all
 
-ActiveRecord::Schema.define(version: 2020_05_07_021502) do
+# Make some users
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "comments", force: :cascade do |t|
-    t.text "content"
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "parent_id"
-    t.string "parent_type"
-    t.integer "score", default: 0
-    t.index ["parent_type", "parent_id"], name: "index_comments_on_parent_type_and_parent_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.integer "category_id", null: false
-    t.integer "user_id", null: false
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "score", default: 0
-    t.integer "num_favorites", default: 0
-    t.index ["category_id"], name: "index_posts_on_category_id"
-    t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "user_comment_votes", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "comment_id", null: false
-    t.boolean "up_vote?"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_user_comment_votes_on_comment_id"
-    t.index ["user_id"], name: "index_user_comment_votes_on_user_id"
-  end
-
-  create_table "user_favorite_categories", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "category_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_user_favorite_categories_on_category_id"
-    t.index ["user_id"], name: "index_user_favorite_categories_on_user_id"
-  end
-
-  create_table "user_favorite_posts", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_user_favorite_posts_on_post_id"
-    t.index ["user_id"], name: "index_user_favorite_posts_on_user_id"
-  end
-
-  create_table "user_post_votes", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
-    t.boolean "up_vote?"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_user_post_votes_on_post_id"
-    t.index ["user_id"], name: "index_user_post_votes_on_user_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "profile_img_url"
-    t.text "bio"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  add_foreign_key "comments", "users"
-  add_foreign_key "posts", "categories"
-  add_foreign_key "posts", "users"
-  add_foreign_key "user_comment_votes", "comments"
-  add_foreign_key "user_comment_votes", "users"
-  add_foreign_key "user_favorite_categories", "categories"
-  add_foreign_key "user_favorite_categories", "users"
-  add_foreign_key "user_favorite_posts", "posts"
-  add_foreign_key "user_favorite_posts", "users"
-  add_foreign_key "user_post_votes", "posts"
-  add_foreign_key "user_post_votes", "users"
+25.times do
+  name = Faker::Internet.username
+  set = ['','?set=set2', '?set=set4']
+  User.create(
+    username: name,
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.safe_email,
+    profile_img_url: "https://robohash.org/#{name}#{set[rand(0..2)]}",
+    bio: Faker::Lorem.paragraph(sentence_count: 2),
+    password: Faker::Internet.password
+  )
 end
+
+# Make some categories
+
+10.times do
+  Category.create(
+    name: Faker::Hacker.adjective.titlecase,
+  )
+end
+
+# Make some posts
+
+Category.all.each do |c|
+  25.times do
+    Post.create(
+      category_id: c.id,
+      user_id: User.all.sample.id,
+      title: Faker::Hacker.ingverb + ' ' + Faker::Hacker.noun + ' ' + Faker::Hacker.verb.titlecase,
+      content: Faker::Lorem.paragraph_by_chars(number: rand(100..1000)),
+      score: rand(0..100),
+      num_favorites: rand(0..50)
+      )
+  end
+end
+
+# Make some comments
+
+Post.all.each do |p|
+  5.times do
+    Comment.create(
+      parent_id: p.id,
+      parent_type: "Post",
+      user_id: User.all.sample.id,
+      content: Faker::Lorem.paragraph(sentence_count: 4),
+      score: rand(0..100)
+    )
+  end
+end
+
+#Make some replies
+Comment.all.each do |c|
+  Comment.create(
+    parent_id: c.id,
+    parent_type: "Comment",
+    user_id: User.all.sample.id,
+    content: Faker::Lorem.paragraph(sentence_count: 4)
+  )
+end
+
+400.times do
+  Comment.create(
+    parent_id: Comment.all.sample.id,
+    parent_type: "Comment",
+    user_id: User.all.sample.id,
+    content: Faker::Lorem.paragraph(sentence_count: 4),
+    score: rand(1..100)
+  )
+end 
+
+
