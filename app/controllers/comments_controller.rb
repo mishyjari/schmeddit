@@ -50,6 +50,7 @@ class CommentsController < ApplicationController
       redirect_to post_path(post)
     else
       flash[:err] = comment.errors.full_messages
+      @errors = flash[:err]
       redirect_back fallback_location: post_path(post)
     end
   end 

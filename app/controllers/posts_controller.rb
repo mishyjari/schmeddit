@@ -11,16 +11,16 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
+    @comment = Comment.new
+    @category = Category.find(flash[:category_id]) if flash[:category_id]
+    @errors = flash[:err]
+
     if session[:user_id]
       @user = User.find(session[:user_id])
     else
       redirect_to login_path
     end 
-
-    @post = Post.new
-    @comment = Comment.new
-    @category = Category.find(flash[:category_id]) if flash[:category_id]
-    @errors = flash[:err]
   end
 
   def create

@@ -9,6 +9,11 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  validates :username, :first_name, :last_name, presence: true
+  validates :username, uniqueness: true
+  validates :username, length: { minimum: 4, maximum: 12 }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+
   def full_name
     self.first_name + ' ' + self.last_name
   end
