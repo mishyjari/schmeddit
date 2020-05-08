@@ -105,3 +105,4 @@ ActiveRecord::Schema.define(version: 2020_05_07_021502) do
   add_foreign_key "user_post_votes", "posts"
   add_foreign_key "user_post_votes", "users"
 end
+

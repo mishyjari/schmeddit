@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       flash[:err] = user.errors.full_messages
       redirect_to edit_user_path(user)
     end
-  end 
+  end
 
   def destroy
     @user.destroy
