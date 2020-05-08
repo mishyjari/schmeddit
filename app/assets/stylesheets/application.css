@@ -15,9 +15,11 @@
  */
 
 :root {
-	--dark-ui: #373742;
-	--light-ui: #ffe7ce;
+	--dark-ui: #23233B;
+	--light-ui: #EBEBEB;
+  --lighter-ui: #FBFEF9;
 }
+
 body {
 	display: grid;
 	grid-template-columns: minmax(700px,auto) 300px;
@@ -31,6 +33,10 @@ div {
 	border-radius: 10px;
 	background: var(--light-ui);
 	box-shadow: inset 1px 1px 2px #373742
+}
+
+.light-background {
+  background: var(--lighter-ui);
 }
 
 div.sidebar-link {

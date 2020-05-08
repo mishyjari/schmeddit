@@ -7,15 +7,15 @@
   <% else %>
     <strong>Author: </strong><%= link_to @post.user.username, user_path(@post.user) %><br />
   <% end %>
-  <strong>Posted: </strong><%= @post.created_at.ctime %><br />
+  <strong>Posted: </strong><%= @post.created_at.strftime("%A %B %-d, %Y") %><br />
   <strong>Category: </strong><%= link_to @post.category.name, category_path(@post.category) %>
 </p>
 
-<div id='post-show-content'>
+<div id='post-show-content' class="light-background">
   <p><%= @post.content %></p>
 </div>
 
-<div id='post-stats'>
+<div id='post-stats' class="light-background">
   <% if @current_user && @current_user == @post.user %>
     <%= render 'partials/post_stats_current_user', post: @post %>
   <% elsif @current_user %>

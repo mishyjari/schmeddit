@@ -1,10 +1,10 @@
 <div class='post-preview'>
   <h4><%= post.category.name %> | <%= link_to post.title, post_path(post) %></h4>
-  <p><em>posted by: </em><%= link_to post.user.username, user_path(post.user) %><em>, <%= post.created_at.ctime %></em></p>
-  <div class='post-preview-content'>
+  <p><em>posted by: </em><%= link_to post.user.username, user_path(post.user) %><em>, <%= post.created_at.strftime("%A %B %-d, %Y") %></em></p>
+  <div class='post-preview-content light-background'>
     <p><%= post.truncate_content(150) %></p>
   </div>
-  <div class='post-preview-stats' %>
+  <div class='post-preview-stats light-background' %>
     <% if post.user == @current_user %>
       <%= render 'partials/post_stats_current_user', post: post %>
     <% elsif session[:user_id] %>
