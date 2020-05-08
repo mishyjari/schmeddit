@@ -1,7 +1,9 @@
 <% if @errors %>
+  <div id="flash-err" class="no-box-shadow">
     <% @errors.each do |error| %>
       <%= error %><br>
     <% end %>
+  </div>
 <% end %>
 
 <%= form_for(@post) do |f| %>

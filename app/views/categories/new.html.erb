@@ -1,8 +1,8 @@
 <%= form_for @category do |f| %>
-  <div class="form form-group no-box-shadow"
+  <div class="form form-group no-box-shadow">
     <% if @errors %>
       <% @errors.each do |error| %>
-        <label><%= error %></label><br>
+        <label class='red-text'><%= error %></label><br>
       <% end %>
     <% end %>
     <%= f.label :name %>

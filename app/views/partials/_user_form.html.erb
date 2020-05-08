@@ -1,7 +1,9 @@
 <% if flash[:err] %>
-  <% flash[:err].each do |err| %>
-    <p><%= err %></p>
-  <% end %>
+  <div id="flass-err" class="no-box-shadow">
+    <% flash[:err].each do |err| %>
+      <p class="red-text"><%= err %></p>
+    <% end %>
+  </div>
 <% end %>
 
 <%= form_for @user do |f| %>

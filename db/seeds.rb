@@ -38,7 +38,7 @@ Category.all.each do |c|
     Post.create(
       category_id: c.id,
       user_id: User.all.sample.id,
-      title: Faker::Hacker.ingverb + ' ' + Faker::Hacker.noun + ' ' + Faker::Hacker.verb.titlecase,
+      title: Faker::Hacker.ingverb.titlecase + ' ' + Faker::Hacker.noun.titlecase + ' ' + Faker::Hacker.verb.titlecase,
       content: Faker::Lorem.paragraph_by_chars(number: rand(100..1000)),
       score: rand(0..100),
       num_favorites: rand(0..50)

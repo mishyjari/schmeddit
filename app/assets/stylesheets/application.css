@@ -59,8 +59,11 @@ div.sidebar-link {
 }
 
 div#flash-err {
-	color: #F00;
-	border: 3px solid #F00;
+	color: #F00 !important;
+}
+
+.red-text {
+  color: #f00;
 }
 
 div#header {
