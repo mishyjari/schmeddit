@@ -63,7 +63,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
 
-    redirect_to welcome_index_path
+    redirect_to home_path
   end
 
   def up_vote
