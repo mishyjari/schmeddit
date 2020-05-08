@@ -1968,6 +1968,10 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+.form-wide {
+  width: 100%;
+}
+
 .form-narrow {
   width: 40% !important;
 }
