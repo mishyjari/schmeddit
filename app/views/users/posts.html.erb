@@ -1,4 +1,10 @@
 <h3>Posts by <%= link_to @user.username, user_path(@user) %></h3>
-<% @user.posts.order({ created_at: :desc }).each do |post| %>
+<% @posts.each do |post| %>
   <%= render 'partials/post_preview', post: post %>
 <% end %>
+<div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @posts %>
+    </div>
+    <%= will_paginate @posts, :container => false %>
+  </div>
