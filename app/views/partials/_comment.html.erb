@@ -11,12 +11,12 @@
     <% end %>
     <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#collapseForm<%= comment.id %>">Reply</a>
   </h5>
+  <p class='comment-content'><%= comment.content %></p>
   <% @comment = new_comment %>
   <% @parent_comment = comment %>
-  <div class="collapse no-box-shadow" id="collapseForm<%= comment.id %>">
+  <div class="collapse no-box-shadow light-background" id="collapseForm<%= comment.id %>">
     <%= render 'partials/new_comment_form' %>
   </div>
-  <p class='comment-content'><%= comment.content %></p>
 
   <% if comment.replies %>
     <% comment.replies.each do |reply| %>
@@ -25,7 +25,7 @@
   <% end %>
 
 <% else %>
-  <div class="collapse" id="i<%= comment.parent.id.to_s %>">
+  <div class="collapse light-background" id="i<%= comment.parent.id.to_s %>">
     <h5>
       <img src='<%= comment.user.profile_img_url %>' alt="<%= comment.user.username %>'s profile picture" class="img-thumbnail" height="42" width="42">
       <%= link_to comment.user.username, user_path(comment.user) %> 
@@ -34,15 +34,14 @@
       <% if comment.replies.count > 0 %>
         <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href='#i<%= comment.id.to_s %>'>Toggle Replies</a>
       <% end %>
-      <%= link_to "Reply", new_comment_path(parent_comment: comment), class: 'btn btn-outline-primary btn-sm' %>
       <a class="btn btn-outline-primary btn-sm" data-toggle="collapse" href="#collapseForm<%= comment.id %>">Reply</a>
     </h5>
+    <p class='comment-content reply'><%= comment.content %></p>
     <% @comment = Comment.new %>
     <% @parent_comment = comment %>
-    <div class="collapse no-box-shadow" id="collapseForm<%= comment.id %>">
+    <div class="collapse no-box-shadow light-background" id="collapseForm<%= comment.id %>">
       <%= render 'partials/new_comment_form' %>
     </div>
-    <p class='comment-content reply'><%= comment.content %></p>
 
     <% if comment.replies %>
       <% comment.replies.each do |reply| %>

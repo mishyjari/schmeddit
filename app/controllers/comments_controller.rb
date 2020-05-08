@@ -21,24 +21,42 @@ class CommentsController < ApplicationController
     end 
   end
 
-  def edit
-    @comment = Comment.find(params[:id])
-  end
+  # def create
+  #   comment = Comment.new(comment_params)
+  #   if comment.parent.class == Post
+  #     post = comment.parent
+  #   else
+  #     parent = Comment.find(params[:comment][:parent_id])
+  #     post = parent.find_parent_post || parent
+  #   end
+  #   if comment.save
+  #     redirect_to post_path(post)
+  #   else
+  #     flash[:err] = comment.errors.full_messages
+  #     redirect_back fallback_location: post_path(post)
+  #   end
+  # end
 
-  def create
+  def create 
     comment = Comment.new(comment_params)
-    if comment.parent.class == Post
+    if comment.parent_type == 'Post'
       post = comment.parent
     else
       parent = Comment.find(params[:comment][:parent_id])
       post = parent.find_parent_post || parent
     end
+    
     if comment.save
       redirect_to post_path(post)
     else
       flash[:err] = comment.errors.full_messages
+      @errors = flash[:err]
       redirect_back fallback_location: post_path(post)
     end
+  end 
+
+  def edit
+    @comment = Comment.find(params[:id])
   end
 
   def update

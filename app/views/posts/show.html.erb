@@ -26,8 +26,13 @@
 </div>
 
 <% if @current_user %>
-  <div class='new-comment=form'>
+  <div class='new-comment'>
     <%= form_for @comment do |f| %>
+      <% if @errors %>
+        <% @errors.each do |error| %>
+          <label><%= error %></label><br>
+        <% end %>
+      <% end %>
       <%= f.hidden_field :user_id, :value => @current_user.id %>
       <%= f.hidden_field :parent_type, :value => 'Post' %>
       <%= f.hidden_field :parent_id, :value => @post.id %>
@@ -39,7 +44,7 @@
 <% end %>
 <h4>Comments</h4>
 <% @post.comments.each do |comment| %>
-  <div class='post-comment'>
+  <div class='post-comment light-background'>
     <%= render 'partials/comment', comment: comment, new_comment: Comment.new %>
   </div>
 <% end %>

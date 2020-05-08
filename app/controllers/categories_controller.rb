@@ -13,6 +13,7 @@ class CategoriesController < ApplicationController
 
   def new
     @category = Category.new
+    @errors = flash[:err]
   end
 
   def create
@@ -23,7 +24,7 @@ class CategoriesController < ApplicationController
       redirect_to new_post_path
     else 
       flash[:err] = category.errors.full_messages
-      redirect_back fallback_location new_category_path
+      redirect_back fallback_location: new_category_path
     end
   end
 

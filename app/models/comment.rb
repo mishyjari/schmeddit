@@ -4,6 +4,9 @@ class Comment < ApplicationRecord
   belongs_to :parent, polymorphic: true
   belongs_to :user
 
+  validates :content, presence: true
+  validates :content, length: { maximum: 500 }
+
   def find_parent_post
     parent = self.parent
     while parent.class != Post

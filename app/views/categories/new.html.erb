@@ -1,6 +1,13 @@
 <%= form_for @category do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+  <div class="form form-group no-box-shadow"
+    <% if @errors %>
+      <% @errors.each do |error| %>
+        <label><%= error %></label><br>
+      <% end %>
+    <% end %>
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control form-narrow'%><br>
 
-  <%= f.submit %>
+    <%= f.submit 'Create Category', class: 'btn btn-primary' %>
+  </div>
 <% end %>
