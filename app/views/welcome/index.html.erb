@@ -1,6 +1,6 @@
 <div id='welcome-posts'>
   <h3 id='welcome_title'>Most Recent Posts</h3>
-  <% Post.most_recent_posts(6).each do |post| %>
+  <% @posts.each do |post| %>
     <%= render 'partials/post_preview', post: post %> 
   <% end %>
 </div>

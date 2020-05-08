@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user, only: [:new, :create, :update, :destroy]
 
   def index
-    if params[:search]
+    if params[:search] && !params[:search].empty?
       @posts = Post.search(params[:search]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
     else
       @posts = []
