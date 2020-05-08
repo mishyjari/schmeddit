@@ -12,11 +12,11 @@
       <a data-toggle='collapse' href='#i<%= post.id %>'><em>(show)</em></a></p>
     <div class='collapse' id='i<%= post.id %>'>
     
-      <p><%= post.truncate_content(150) %></p>
+      <p><%= post.truncate_content(150) %>
+      <% if post.content.length > 150%><%= link_to 'click to see full post', post_path(post) %><% end %>
+      </p>
        
-      <h6><em><%= post.created_at.ctime %></em></h6>
-
-      <em><%= link_to 'See full post', post_path(post) %></em>
+      <h6><em><%= post.created_at.strftime("%d/%m/%y") %></em></h6>
     </div> 
   </div>
 <% end %>

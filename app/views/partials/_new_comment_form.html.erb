@@ -1,13 +1,19 @@
-<div class='no-box-shadow'>
-  <%= form_for(@comment) do |f| %>
-    <div class="form-group no-box-shadow">
-      <label>You're responding to <%= @parent_comment.user.username %> <%= @parent_comment.id %></label><br>
-      <%= f.hidden_field :parent_type, :value => 'Comment' %>
-      <%= f.hidden_field :user_id, :value => @current_user.id %>
-      <%= f.hidden_field :parent_id, :value => @parent_comment.id %>
-      <%= f.label :content, :Comment %>
-      <%= f.text_area :content, { class: 'form-control', rows: '4' } %><br>
-      <%= f.submit :Submit, class: 'btn btn-primary'%>
-    </div>
-  <% end %>
-</div>
+<% if @current_user %>
+  <div class='no-box-shadow'>
+    <%= form_for(@comment) do |f| %>
+      <div class="form-group no-box-shadow">
+        <label>You're responding to <%= @parent_comment.user.username %> <%= @parent_comment.id %></label><br>
+        <%= f.hidden_field :parent_type, :value => 'Comment' %>
+        <%= f.hidden_field :user_id, :value => @current_user.id %>
+        <%= f.hidden_field :parent_id, :value => @parent_comment.id %>
+        <%= f.label :content, :Comment %>
+        <%= f.text_area :content, { class: 'form-control', rows: '4' } %><br>
+        <%= f.submit :Submit, class: 'btn btn-primary'%>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class='no-box-shadow'>
+    <h4><%= link_to 'Login to Comment', login_path %></h4>
+  </div>
+<% end %>

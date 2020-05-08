@@ -26,11 +26,11 @@
   <% end %>
 </div>
 <h4>Recent Posts</h4>
-<%= link_to 'show all', user_posts_path(@user) %><br />
 <div class='users-show-posts'>
   <% if @user.posts.empty? %>
     <p>No posts to show!</p>
   <% else %>
+    <%= link_to 'show all', user_posts_path(@user) %><br />
     <% @user.user_recent_posts(3).each do |post| %>
       <%= render 'partials/post_preview', post: post %>
     <% end %>

@@ -58,6 +58,11 @@ div.sidebar-link {
   text-align: center;
 }
 
+div#flash-err {
+	color: #F00;
+	border: 3px solid #F00;
+}
+
 div#header {
 	grid-column: 1 / 3;
 	grid-row: 1;

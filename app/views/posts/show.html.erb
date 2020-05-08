@@ -41,6 +41,10 @@
       <%= f.submit :Submit, class: 'btn btn-primary' %>
     <% end %>
   </div>
+<% else %>
+  <div class='no-box-shadow'>
+    <h4><%= link_to 'Login to Comment', login_path %></h4>
+  </div>
 <% end %>
 <h4>Comments</h4>
 <% @post.comments.each do |comment| %>
