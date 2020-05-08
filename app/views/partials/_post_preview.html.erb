@@ -2,7 +2,8 @@
   <h4><%= post.category.name %> | <%= link_to post.title, post_path(post) %></h4>
   <p><em>posted by: </em><%= link_to post.user.username, user_path(post.user) %><em>, <%= post.created_at.strftime("%A %B %-d, %Y") %></em></p>
   <div class='post-preview-content light-background'>
-    <p><%= post.truncate_content(150) %></p>
+  <p><%= post.truncate_content(500) %>
+<% if post.content.length > 500 %><%= link_to 'click to see more', post_path(post)%><% end %></p>
   </div>
   <div class='post-preview-stats light-background' %>
     <% if post.user == @current_user %>

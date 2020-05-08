@@ -18,6 +18,11 @@ class Post < ApplicationRecord
     posts 
   end
 
+  def self.search(search)
+    where("title LIKE ?", "%#{search}%")
+    where("content LIKE ?", "%#{search}%")
+  end
+
   def num_post_faves
     self.num_favorites
   end

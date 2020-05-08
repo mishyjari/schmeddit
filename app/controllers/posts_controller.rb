@@ -2,6 +2,14 @@ class PostsController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user, only: [:new, :create, :update, :destroy]
 
+  def index
+    if params[:search]
+      @posts = Post.search(params[:search]).order('created_at DESC').paginate(:page => params[:page], :per_page => 5)
+    else
+      @posts = []
+    end
+  end
+
   def new
     if session[:user_id]
       @user = User.find(session[:user_id])
