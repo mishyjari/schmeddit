@@ -8,7 +8,6 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: true
   validates :title, length: { maximum: 60 }
-  validates :content, length: { maximum: 500 }
 
   def self.random_posts(n)
     posts = []
