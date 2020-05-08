@@ -5,7 +5,11 @@
 
     <strong><p><%= post.category.name %> | <%= link_to post.title, post_path(post) %></strong><br />
    
-      <em>Posted By:</em> <strong><%= link_to post.user.username, user_path(post.user) %></strong><br />
+      <em>Posted By:</em> 
+      <strong>
+        <img src='<%= post.user.profile_img_url %>' alt="<%= post.user.username %>'s profile picture" class="img-thumbnail" height="42" width="42">
+        <%= link_to post.user.username, user_path(post.user) %>
+      </strong><br />
 
       <em>Score: </em><strong><%= post.score.to_s %></strong><br />
 

@@ -45,7 +45,7 @@
 
     <% if comment.replies %>
       <% comment.replies.each do |reply| %>
-        <%= render 'partials/comment', comment: reply, new_comment: Comment.new %>
+        <%= render 'partials/comment', comment: reply %>
       <% end %>
     <% end %>
   </div>

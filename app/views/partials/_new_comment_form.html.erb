@@ -2,7 +2,7 @@
   <div class='no-box-shadow'>
     <%= form_for(@comment) do |f| %>
       <div class="form-group no-box-shadow">
-        <label>You're responding to <%= @parent_comment.user.username %> <%= @parent_comment.id %></label><br>
+        <label>You're responding to <%= @parent_comment.user.username %></label><br>
         <%= f.hidden_field :parent_type, :value => 'Comment' %>
         <%= f.hidden_field :user_id, :value => @current_user.id %>
         <%= f.hidden_field :parent_id, :value => @parent_comment.id %>
