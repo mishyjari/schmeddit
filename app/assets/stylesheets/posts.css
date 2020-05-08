@@ -1,0 +1,17 @@
+.post-preview-content {
+	background: white;
+	box-shadow: inset 1px 1px 2px var(--dark-ui)
+}
+
+.post-preview-stats {
+	margin: auto;
+	align: center;
+	padding: 0;
+	padding-left: 10px;
+	box-shadow: none
+}
+
+.post-preview > h4, p {
+	padding-left: 10px;
+	padding-bottom: 0;
+}
