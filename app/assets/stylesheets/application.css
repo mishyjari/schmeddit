@@ -85,7 +85,7 @@ div#right-sidebar {
 
 div#footer {
 	grid-column: 1 / 3;
-	grid-row 3;
+	grid-row: 3;
 }
 
 
