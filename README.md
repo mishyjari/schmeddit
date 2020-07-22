@@ -5,17 +5,16 @@
 ![Schmeddit homepage](.github/images/homepage.gif)
 
 ## Usage 
-|![designing a color scheme](./.github/images/colorscheme.gif)|
+|![create an account](./.github/images/user.png)|
 | --- |
-| **Design your terminal's color scheme** |
+| **Create an account and sign in** |
 
-|![creating a ZSH prompt](./.github/images/prompt.gif)|
+|![view users posts](./.github/images/post.png)|
 | --- |
-| **Create a ZSH Prompt** |
+| **View user's posts** |
 
-|![export and download your creation](./.github/images/download.gif)|
+|![leave a comment](./.github/images/comment.gif)|
 | --- |
-| **Download your theme** |
+| **Leave a comment or respond to existing comments** |
 
-Create an account to save your theme!
 
