@@ -1,24 +1,21 @@
-# README
+[![Image of Schmeddit Logo](.github/images/schmeddit.png)](https://schmeddit.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Schmeddit
+### Re-imagining of Reddit using a relational DB created with Rails
+![Schmeddit homepage](.github/images/homepage.gif)
 
-Things you may want to cover:
+## Usage 
+|![designing a color scheme](./.github/images/colorscheme.gif)|
+| --- |
+| **Design your terminal's color scheme** |
 
-* Ruby version
+|![creating a ZSH prompt](./.github/images/prompt.gif)|
+| --- |
+| **Create a ZSH Prompt** |
 
-* System dependencies
+|![export and download your creation](./.github/images/download.gif)|
+| --- |
+| **Download your theme** |
 
-* Configuration
+Create an account to save your theme!
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
