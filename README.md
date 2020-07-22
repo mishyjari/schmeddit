@@ -5,15 +5,15 @@
 ![Schmeddit homepage](.github/images/homepage.gif)
 
 ## Usage 
-|![designing a color scheme](./.github/images/colorscheme.gif)|
+|![designing a color scheme](.github/images/colorscheme.gif)|
 | --- |
 | **Design your terminal's color scheme** |
 
-|![creating a ZSH prompt](./.github/images/prompt.gif)|
+|![creating a ZSH prompt](.github/images/prompt.gif)|
 | --- |
 | **Create a ZSH Prompt** |
 
-|![export and download your creation](./.github/images/download.gif)|
+|![export and download your creation](.github/images/download.gif)|
 | --- |
 | **Download your theme** |
 
