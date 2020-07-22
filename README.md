@@ -16,5 +16,3 @@
 |![leave a comment](./.github/images/comment.gif)|
 | --- |
 | **Leave a comment or respond to existing comments** |
-
-
