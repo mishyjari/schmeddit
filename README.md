@@ -1,7 +1,7 @@
 [![Image of Schmeddit Logo](.github/images/schmeddit.png)](https://schmeddit.herokuapp.com/)
 
 # Schmeddit
-### Re-imagining of Reddit using a relational DB created with Rails
+### Re-imagining of Reddit using a relational DB created with Rails.
 ![Schmeddit homepage](.github/images/homepage.gif)
 
 ## Usage 
